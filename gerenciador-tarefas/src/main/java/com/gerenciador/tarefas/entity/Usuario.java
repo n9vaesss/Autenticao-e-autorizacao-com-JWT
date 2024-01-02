@@ -15,9 +15,15 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "usuarios")
+@Data
+@Getter
+@Setter
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,10 +32,10 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(unique = true, length = 50)
+    @Column(unique = true, length = 100)
     private String username;
     
-    @Column(length = 50)
+    @Column(length = 150)
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
